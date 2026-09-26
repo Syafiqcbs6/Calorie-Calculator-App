@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_deep"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical">
+
+        <!-- ================= HEADER ================= -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_header"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="22dp"
+            android:paddingBottom="64dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                style="@style/HeaderBackButton" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/daily_log_title"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvLogDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/header_subtitle"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="24dp">
+
+            <!-- ================= DAILY SUMMARY ================= -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/AppCard"
+                android:layout_marginTop="-40dp">
+
+                <LinearLayout style="@style/CardInner">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="130dp"
+                            android:layout_height="130dp">
+
+                            <com.google.android.material.progressindicator.CircularProgressIndicator
+                                android:id="@+id/ringEaten"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:max="100"
+                                app:indicatorColor="@color/accent"
+                                app:indicatorSize="126dp"
+                                app:trackColor="@color/primary_light"
+                                app:trackCornerRadius="6dp"
+                                app:trackThickness="12dp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvRingPercent"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/text_primary"
+                                    android:textSize="24sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    style="@style/SummaryLabel"
+                                    android:text="of target" />
+                            </LinearLayout>
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="18dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvRemainingLabel"
+                                style="@style/SummaryLabel"
+                                android:text="@string/remaining" />
+
+                            <TextView
+                                android:id="@+id/tvRemaining"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/primary"
+                                android:textSize="26sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvLogTarget"
+                                style="@style/SummaryLabel"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/divider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout style="@style/StatColumn">
+
+                            <TextView
+                                android:id="@+id/tvStatEaten"
+                                style="@style/StatValue" />
+
+                            <TextView
+                                style="@style/StatLabel"
+                                android:text="🍽  Eaten" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/StatColumn">
+
+                            <TextView
+                                android:id="@+id/tvStatBurned"
+                                style="@style/StatValue" />
+
+                            <TextView
+                                style="@style/StatLabel"
+                                android:text="🔥  Burned" />
+                        </LinearLayout>
+
+                        <LinearLayout style="@style/StatColumn">
+
+                            <TextView
+                                android:id="@+id/tvStatWater"
+                                style="@style/StatValue" />
+
+                            <TextView
+                                style="@style/StatLabel"
+                                android:text="💧  Water" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnLogCalc"
+                        style="@style/AppTonalButton"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/btn_see_calculation"
+                        app:icon="@drawable/ic_calculator" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ================= TABS ================= -->
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggleSections"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                app:checkedButton="@+id/tabMeals"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tabMeals"
+                    style="@style/SegmentButton"
+                    android:text="@string/tab_meals" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tabExercise"
+                    style="@style/SegmentButton"
+                    android:text="@string/tab_exercise" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tabWater"
+                    style="@style/SegmentButton"
+                    android:text="@string/tab_water" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
+
+            <!-- ================= SECTION: MEALS ================= -->
+            <LinearLayout
+                android:id="@+id/sectionMeals"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/mealBreakfast"
+                    layout="@layout/layout_meal_card" />
+
+                <include
+                    android:id="@+id/mealLunch"
+                    layout="@layout/layout_meal_card" />
+
+                <include
+                    android:id="@+id/mealDinner"
+                    layout="@layout/layout_meal_card" />
+
+                <include
+                    android:id="@+id/mealSnacks"
+                    layout="@layout/layout_meal_card" />
+            </LinearLayout>
+
+            <!-- ================= SECTION: EXERCISE ================= -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/sectionExercise"
+                style="@style/AppCard"
+                android:visibility="gone">
+
+                <LinearLayout style="@style/CardInner">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/SectionTitle"
+                            android:layout_width="0dp"
+                            android:layout_marginBottom="0dp"
+                            android:layout_weight="1"
+                            android:text="@string/section_exercise" />
+
+                        <TextView
+                            android:id="@+id/tvExerciseTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/fat"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/exercise_info"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvExerciseEmpty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/exercise_empty"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp"
+                        android:textStyle="italic" />
+
+                    <LinearLayout
+                        android:id="@+id/exerciseEntries"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAddExercise"
+                        style="@style/AppButton"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="14dp"
+                        android:text="@string/btn_add_exercise"
+                        app:icon="@drawable/ic_plus"
+                        app:iconGravity="textStart" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ================= SECTION: WATER ================= -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/sectionWater"
+                style="@style/AppCard"
+                android:visibility="gone">
+
+                <LinearLayout style="@style/CardInner">
+
+                    <TextView
+                        style="@style/SectionTitle"
+                        android:text="@string/section_water_log" />
+
+                    <TextView
+                        android:id="@+id/tvWaterLog"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:textColor="@color/water"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/barWater"
+                        style="@style/MacroBar"
+                        app:indicatorColor="@color/water" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnWater250"
+                            style="@style/MealActionButton"
+                            android:layout_marginEnd="4dp"
+                            android:text="@string/btn_water_250" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnWater500"
+                            style="@style/MealActionButton"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:text="@string/btn_water_500" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnWaterCustom"
+                            style="@style/MealActionButton"
+                            android:layout_marginStart="4dp"
+                            android:text="@string/btn_water_custom" />
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnWaterReset"
+                        style="@style/AppTonalButton"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/btn_water_reset"
+                        app:icon="@drawable/ic_refresh" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnClearLog"
+                style="@style/AppDangerButton"
+                android:layout_marginTop="4dp"
+                android:text="@string/btn_clear_log"
+                app:icon="@drawable/ic_close" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

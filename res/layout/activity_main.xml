@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_deep"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical">
+
+        <!-- ================= GRADIENT HEADER ================= -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_header"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="12dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="22dp"
+            android:paddingBottom="64dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                style="@style/HeaderBackButton" />
+
+            <FrameLayout
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:background="@drawable/bg_icon_circle">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/ic_flame" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/header_title"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="@string/header_subtitle"
+                    android:textColor="@color/header_subtitle"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="24dp">
+
+            <!-- ================= CARD 1: ABOUT YOU ================= -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/AppCard"
+                android:layout_marginTop="-40dp">
+
+                <LinearLayout style="@style/CardInner">
+
+                    <TextView
+                        style="@style/SectionTitle"
+                        android:text="@string/section_about" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilName"
+                        style="@style/InputField"
+                        android:hint="@string/hint_name"
+                        app:startIconDrawable="@drawable/ic_person">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName|textCapWords"
+                            android:maxLength="30" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilAge"
+                        style="@style/InputField"
+                        android:hint="@string/hint_age"
+                        app:startIconDrawable="@drawable/ic_calendar"
+                        app:suffixText="@string/suffix_years">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etAge"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:maxLength="3" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        style="@style/FieldLabel"
+                        android:text="@string/label_gender" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroupGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        app:chipSpacingHorizontal="10dp"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipMale"
+                            style="@style/AppChip"
+                            android:text="@string/male" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipFemale"
+                            style="@style/AppChip"
+                            android:text="@string/female" />
+                    </com.google.android.material.chip.ChipGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ================= CARD 2: BODY MEASUREMENTS ================= -->
+            <com.google.android.material.card.MaterialCardView style="@style/AppCard">
+
+                <LinearLayout style="@style/CardInner">
+
+                    <TextView
+                        style="@style/SectionTitle"
+                        android:text="@string/section_body" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilWeight"
+                            style="@style/InputField"
+                            android:layout_width="0dp"
+                            android:layout_marginEnd="6dp"
+                            android:layout_weight="1"
+                            android:hint="@string/hint_weight"
+                            app:startIconDrawable="@drawable/ic_scale">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etWeight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="numberDecimal"
+                                android:maxLength="6" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilHeight"
+                            style="@style/InputField"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="6dp"
+                            android:layout_weight="1"
+                            android:hint="@string/hint_height"
+                            app:startIconDrawable="@drawable/ic_ruler">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etHeight"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="numberDecimal"
+                                android:maxLength="6" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ================= CARD 3: LIFESTYLE & GOAL ================= -->
+            <com.google.android.material.card.MaterialCardView style="@style/AppCard">
+
+                <LinearLayout style="@style/CardInner">
+
+                    <TextView
+                        style="@style/SectionTitle"
+                        android:text="@string/section_lifestyle" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilActivity"
+                        style="@style/DropdownField"
+                        android:hint="@string/hint_activity"
+                        app:startIconDrawable="@drawable/ic_bolt">
+
+                        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                            android:id="@+id/actvActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        style="@style/FieldLabel"
+                        android:text="@string/label_goal" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroupGoal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        app:checkedChip="@+id/chipMaintain"
+                        app:chipSpacingHorizontal="10dp"
+                        app:selectionRequired="true"
+                        app:singleSelection="true">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipLose"
+                            style="@style/AppChip"
+                            android:text="@string/goal_lose" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipMaintain"
+                            style="@style/AppChip"
+                            android:text="@string/goal_maintain" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipGain"
+                            style="@style/AppChip"
+                            android:text="@string/goal_gain" />
+                    </com.google.android.material.chip.ChipGroup>
+
+                    <TextView
+                        android:id="@+id/tvGoalHint"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_formula"
+                        android:padding="12dp"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ================= BUTTONS ================= -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCalculate"
+                style="@style/AppButton"
+                android:layout_marginTop="8dp"
+                android:text="@string/btn_calculate"
+                app:icon="@drawable/ic_flame"
+                app:iconGravity="textStart" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnClear"
+                style="@style/AppTonalButton"
+                android:layout_marginTop="10dp"
+                android:text="@string/btn_clear"
+                app:icon="@drawable/ic_refresh" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
